@@ -52,15 +52,15 @@ function Countdown({ target, lang }: { target: Date; lang: Lang }) {
     [Math.floor(diff / 6e4) % 60, t("minutes", lang)],
     [Math.floor(diff / 1e3) % 60, t("seconds", lang)],
   ] as const;
-  if (now != null && diff === 0) return <p className="font-script text-5xl text-gold-gradient">{t("started", lang)}</p>;
+  if (now != null && diff === 0) return <p className="font-script text-4xl text-gold-gradient">{t("started", lang)}</p>;
   return (
     <>
-      <div className="font-serif text-[7rem] leading-none text-gold-gradient">{parts[0][0]}</div>
+      <div className="font-serif text-7xl leading-none text-gold-gradient">{parts[0][0]}</div>
       <p className="mt-1 text-sm uppercase tracking-[0.3em] text-ink-foreground/80">{parts[0][1]}</p>
       <div className="mt-8 grid grid-cols-3 gap-3">
         {parts.slice(1).map(([v, l]) => (
           <div key={l} className="rounded-lg border border-gold/40 bg-ink/60 px-2 py-3">
-            <div className="text-3xl tabular-nums text-gold-soft">{String(v).padStart(2, "0")}</div>
+            <div className="text-2xl tabular-nums text-gold-soft">{String(v).padStart(2, "0")}</div>
             <div className="text-[0.65rem] uppercase tracking-widest text-ink-foreground/70">{l}</div>
           </div>
         ))}
@@ -132,7 +132,7 @@ function Gallery({ photos, lang }: { photos: InviteData["photos"]; lang: Lang })
   return (
     <section className="px-6 py-20">
       <Reveal className="text-center">
-        <h2 className="font-script text-6xl text-secondary">{t("gallery", lang)}</h2>
+        <h2 className="font-script text-4xl text-secondary">{t("gallery", lang)}</h2>
         <Ornament />
       </Reveal>
       <div className="mx-auto grid max-w-md grid-cols-2 gap-3">
@@ -176,15 +176,15 @@ export function InvitationView({ data, slug }: { data: InviteData; slug: string 
       </div>
 
       {/* Hero */}
-      <section className="relative flex min-h-[100svh] flex-col items-center justify-center px-14 py-24 text-center"
+      <section className="relative flex min-h-[100svh] flex-col items-center justify-center px-10 py-24 text-center"
         style={{ backgroundImage: `url(${frame})`, backgroundSize: "100% 100%" }}>
         <Reveal>
           <div className="mb-4 text-3xl text-gold">❋</div>
-          <h1 className="font-script text-6xl leading-tight text-secondary">{tr(data.greeting, lang)}</h1>
+          <h1 className="font-script text-4xl leading-tight text-secondary break-words">{tr(data.greeting, lang)}</h1>
           <Ornament />
-          <p className="text-lg leading-relaxed text-foreground/80">{tr(data.welcome, lang)}</p>
+          <p className="text-base leading-relaxed text-foreground/80">{tr(data.welcome, lang)}</p>
           <p className="mt-6 text-sm uppercase tracking-[0.25em] text-muted-foreground">{tr(data.title, lang)}</p>
-          <p className="mt-3 text-2xl font-semibold uppercase tracking-[0.15em] text-primary">{tr(data.hosts, lang)}</p>
+          <p className="mt-3 text-xl font-semibold uppercase tracking-[0.12em] text-primary break-words">{tr(data.hosts, lang)}</p>
         </Reveal>
         <a href="#date" className="absolute bottom-24 text-secondary animate-float-down" aria-label={t("scroll", lang)}>
           <ChevronDown className="h-8 w-8" />
@@ -194,19 +194,19 @@ export function InvitationView({ data, slug }: { data: InviteData; slug: string 
       {/* Date & program */}
       <section id="date" className="px-8 py-20 text-center">
         <Reveal>
-          <h2 className="font-script text-6xl text-secondary">{t("dateTitle", lang)}</h2>
+          <h2 className="font-script text-4xl text-secondary">{t("dateTitle", lang)}</h2>
           <Ornament />
-          <p className="text-3xl text-primary">{fd.line}</p>
+          <p className="text-2xl text-primary">{fd.line}</p>
           <p className="mt-1 text-lg italic text-muted-foreground">{fd.weekday} · {data.time}</p>
         </Reveal>
         {data.schedule.length > 0 && (
           <Reveal className="mx-auto mt-12 max-w-xs text-left">
-            <h3 className="mb-6 text-center font-script text-5xl text-secondary">{t("program", lang)}</h3>
+            <h3 className="mb-6 text-center font-script text-3xl text-secondary">{t("program", lang)}</h3>
             <ol className="relative border-l border-gold/60 pl-6">
               {data.schedule.map((s, i) => (
                 <li key={i} className="relative pb-6 last:pb-0">
                   <span className="absolute -left-[31px] top-1.5 h-3 w-3 rounded-full border-2 border-gold bg-background" />
-                  <div className="text-2xl italic text-gold">{s.time}</div>
+                  <div className="text-xl italic text-gold">{s.time}</div>
                   <div className="text-foreground/80">{tr(s.label, lang)}</div>
                 </li>
               ))}
@@ -229,9 +229,9 @@ export function InvitationView({ data, slug }: { data: InviteData; slug: string 
       {/* Location */}
       <section className="px-6 py-20 text-center">
         <Reveal>
-          <h2 className="font-script text-6xl text-secondary">{t("location", lang)}</h2>
+          <h2 className="font-script text-4xl text-secondary">{t("location", lang)}</h2>
           <Ornament />
-          <p className="text-2xl text-primary">{tr(data.venue, lang)}</p>
+          <p className="text-xl text-primary">{tr(data.venue, lang)}</p>
           <p className="mt-1 flex items-center justify-center gap-1 text-muted-foreground"><MapPin className="h-4 w-4" />{tr(data.address, lang)}</p>
           {q && (
             <div className="mt-6 overflow-hidden rounded-xl shadow-soft ring-1 ring-gold/40">
@@ -251,7 +251,7 @@ export function InvitationView({ data, slug }: { data: InviteData; slug: string 
       {data.rsvpEnabled && (
         <section className="bg-card px-6 py-20 text-center">
           <Reveal>
-            <h2 className="font-script text-5xl leading-tight text-secondary">{t("rsvpTitle", lang)}</h2>
+            <h2 className="font-script text-4xl leading-tight text-secondary">{t("rsvpTitle", lang)}</h2>
             <Ornament />
             <p className="mb-8 text-muted-foreground">{tr(data.rsvpNote, lang)}</p>
             <RsvpForm slug={slug} lang={lang} maxGuests={data.maxGuests} />
@@ -260,7 +260,7 @@ export function InvitationView({ data, slug }: { data: InviteData; slug: string 
       )}
 
       <section className="px-6 py-16 text-center">
-        <p className="font-script text-6xl text-gold-gradient">{tr(data.thanks, lang)}</p>
+        <p className="font-script text-4xl text-gold-gradient break-words">{tr(data.thanks, lang)}</p>
         <p className="mt-2 uppercase tracking-[0.2em] text-primary">{tr(data.hosts, lang)}</p>
       </section>
 
