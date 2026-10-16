@@ -48,5 +48,5 @@ export function mapQuery(d: InviteData): string {
 
 export function youtubeId(url: string): string | null {
   const m = url.match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([\w-]{11})/);
-  return m ? m[1] : null;
+  return m?.[1] ?? null;
 }

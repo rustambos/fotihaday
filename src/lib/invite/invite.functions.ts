@@ -83,7 +83,7 @@ export const saveInvitation = createServerFn({ method: "POST" })
   )
   .handler(async ({ data }) => {
     const admin = await requireAdmin(data.token);
-    const payload = data.data as unknown as Database["public"]["Tables"]["invitations"]["Insert"]["data"];
+    const payload = data.data as unknown as Database["public"]["Tables"]["invitations"]["Insert"]["data"] & {};
     if (data.slug) {
       const { error } = await admin
         .from("invitations")
