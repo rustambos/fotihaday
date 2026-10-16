@@ -21,7 +21,7 @@ function Reveal({ children, className = "" }: { children: ReactNode; className?:
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const io = new IntersectionObserver(([e]) => e.isIntersecting && (el.classList.add("is-in"), io.disconnect()), { threshold: 0.15 });
+    const io = new IntersectionObserver(([e]) => e?.isIntersecting && (el.classList.add("is-in"), io.disconnect()), { threshold: 0.15 });
     io.observe(el);
     return () => io.disconnect();
   }, []);
@@ -148,7 +148,7 @@ function Gallery({ photos, lang }: { photos: InviteData["photos"]; lang: Lang })
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/95" onClick={() => setOpen(null)}>
           <button className="absolute right-4 top-4 text-ink-foreground" aria-label="Close"><X /></button>
           <button className="absolute left-2 p-3 text-ink-foreground" onClick={(e) => { e.stopPropagation(); go(-1); }} aria-label="Previous"><ChevronLeft /></button>
-          <img src={photos[open].url} alt="" className="max-h-[85vh] max-w-[90vw] rounded-lg object-contain" onClick={(e) => e.stopPropagation()} />
+          <img src={photos[open]?.url} alt="" className="max-h-[85vh] max-w-[90vw] rounded-lg object-contain" onClick={(e) => e.stopPropagation()} />
           <button className="absolute right-2 p-3 text-ink-foreground" onClick={(e) => { e.stopPropagation(); go(1); }} aria-label="Next"><ChevronRight /></button>
         </div>
       )}

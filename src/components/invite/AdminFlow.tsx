@@ -196,9 +196,9 @@ function Editor({ token, slug, initial, onClose, onExpired }: {
                   <div key={p.url + i} className="relative">
                     <img src={p.url} alt="" className="aspect-square w-full rounded object-cover" />
                     <div className="absolute inset-x-0 bottom-0 flex justify-between bg-ink/70 p-1 text-ink-foreground">
-                      <button aria-label="Up" disabled={i === 0} onClick={() => { const a = [...d.photos]; [a[i - 1], a[i]] = [a[i], a[i - 1]]; set("photos", a); }}><ArrowUp className="h-4 w-4" /></button>
+                      <button aria-label="Up" disabled={i === 0} onClick={() => { const a = [...d.photos]; [a[i - 1], a[i]] = [a[i]!, a[i - 1]!]; set("photos", a); }}><ArrowUp className="h-4 w-4" /></button>
                       <button aria-label="Delete" onClick={() => { if (p.path) delPhoto({ data: { token, path: p.path } }).catch(() => {}); set("photos", d.photos.filter((_, j) => j !== i)); }}><Trash2 className="h-4 w-4" /></button>
-                      <button aria-label="Down" disabled={i === d.photos.length - 1} onClick={() => { const a = [...d.photos]; [a[i + 1], a[i]] = [a[i], a[i + 1]]; set("photos", a); }}><ArrowDown className="h-4 w-4" /></button>
+                      <button aria-label="Down" disabled={i === d.photos.length - 1} onClick={() => { const a = [...d.photos]; [a[i + 1], a[i]] = [a[i]!, a[i + 1]!]; set("photos", a); }}><ArrowDown className="h-4 w-4" /></button>
                     </div>
                   </div>
                 ))}

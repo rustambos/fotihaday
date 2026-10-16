@@ -44,7 +44,7 @@ export type TKey = keyof typeof dict;
 export const t = (k: TKey, lang: Lang) => dict[k][lang];
 
 export function formatDate(date: string, lang: Lang) {
-  const [y, m, d] = date.split("-").map(Number);
+  const [y = 2026, m = 1, d = 1] = date.split("-").map(Number);
   const wd = new Date(Date.UTC(y, m - 1, d)).getUTCDay();
   const month = t("months", lang).split(",")[m - 1];
   const weekday = t("weekdays", lang).split(",")[wd];

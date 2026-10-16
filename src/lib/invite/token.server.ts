@@ -45,5 +45,5 @@ export async function verifyToken(token: string, secret: string, now = Date.now(
   const exp = Number(parts[1]);
   if (!Number.isFinite(exp) || exp <= now) return false;
   const expected = await hmac(secret, `${parts[0]}.${parts[1]}`);
-  return safeEqual(expected, parts[2]);
+  return safeEqual(expected, parts[2] ?? "");
 }
