@@ -14,7 +14,68 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      invitations: {
+        Row: {
+          created_at: string
+          data: Json
+          id: string
+          slug: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          data?: Json
+          id?: string
+          slug: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          data?: Json
+          id?: string
+          slug?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      rsvps: {
+        Row: {
+          attending: boolean
+          created_at: string
+          guest_name: string
+          guests_count: number
+          id: string
+          invitation_id: string
+          message: string | null
+        }
+        Insert: {
+          attending: boolean
+          created_at?: string
+          guest_name: string
+          guests_count?: number
+          id?: string
+          invitation_id: string
+          message?: string | null
+        }
+        Update: {
+          attending?: boolean
+          created_at?: string
+          guest_name?: string
+          guests_count?: number
+          id?: string
+          invitation_id?: string
+          message?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "rsvps_invitation_id_fkey"
+            columns: ["invitation_id"]
+            isOneToOne: false
+            referencedRelation: "invitations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never

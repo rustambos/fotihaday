@@ -1,5 +1,13 @@
 {
   "version": "7",
   "dialect": "postgresql",
-  "entries": []
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1792147516016,
+      "tag": "0000_invitations_rsvps",
+      "breakpoints": true
+    }
+  ]
 }
